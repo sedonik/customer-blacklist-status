@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Greentube\Brevo\Service;
 
 use GuzzleHttp\Client;
