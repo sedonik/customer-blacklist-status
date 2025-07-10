@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="gr_brevo_contact" resource="default" engine="innodb" comment="Brevo Contact Mapping Table">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="int" name="customer_id" unsigned="true" nullable="false" comment="Customer ID"/>
+        <column xsi:type="int" name="brevo_id" unsigned="true" nullable="false" comment="Brevo Contact ID"/>
+        <column xsi:type="smallint" name="black_list_status" unsigned="true" nullable="false" default="0" comment="Black List Status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="GR_BREVO_CONTACT_CUSTOMER_ID" indexType="btree">
+            <column name="customer_id"/>
+        </index>
+        <index referenceId="GR_BREVO_CONTACT_BREVO_ID" indexType="btree">
+            <column name="brevo_id"/>
+        </index>
+    </table>
+</schema>
