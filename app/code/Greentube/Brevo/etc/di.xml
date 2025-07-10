@@ -3,4 +3,10 @@
     <type name="Magento\Customer\Api\CustomerRepositoryInterface">
         <plugin name="brevo_contact_extension" type="Greentube\Brevo\Plugin\CustomerRepositoryPlugin" />
     </type>
-</config> 
+    <type name="Greentube\Brevo\Api\ContactServiceInterface">
+        <arguments>
+            <argument name="httpClient" xsi:type="object">GuzzleHttp\Client</argument>
+        </arguments>
+    </type>
+    <preference for="Greentube\Brevo\Api\ContactServiceInterface" type="Greentube\Brevo\Model\ContactService" />
+</config>
