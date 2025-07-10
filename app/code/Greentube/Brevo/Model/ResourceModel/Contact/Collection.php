@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Greentube\Brevo\Model\ResourceModel\Contact;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
