@@ -3,6 +3,7 @@
     <module name="Greentube_Brevo" setup_version="1.0.0">
         <sequence>
             <module name="Magento_Backend"/>
+            <module name="Magento_Config"/>
         </sequence>
     </module>
 </config> 
