@@ -1,15 +1,15 @@
 <?php
 namespace Greentube\Brevo\Repository;
 
-use Greentube\Brevo\Model\EmailBlackListStatus;
+use Greentube\Brevo\Service\ContactService;
 use Greentube\Brevo\Model\ResourceModel\Contact as ContactResource;
 
 class ContactRepository
 {
     /**
-     * @var EmailBlackListStatus
+     * @var ContactService
      */
-    private $emailBlackListStatus;
+    private $contactService;
 
     /**
      * @var ContactResource
@@ -17,14 +17,14 @@ class ContactRepository
     private $contactResource;
 
     /**
-     * @param EmailBlackListStatus $emailBlackListStatus
+     * @param ContactService $contactService
      * @param ContactResource $contactResource
      */
     public function __construct(
-        EmailBlackListStatus $emailBlackListStatus,
+        ContactService $contactService,
         ContactResource $contactResource
     ) {
-        $this->emailBlackListStatus = $emailBlackListStatus;
+        $this->contactService = $contactService;
         $this->contactResource = $contactResource;
     }
 
@@ -36,7 +36,7 @@ class ContactRepository
      */
     public function syncById($brevoId)
     {
-        $blacklistStatus = $this->emailBlackListStatus->getById($brevoId);
+        $blacklistStatus = $this->contactService->getById($brevoId);
         
         // Update the black_list_status field based on emailBlacklisted status
         $blackListStatus = $blacklistStatus['emailBlacklisted'] ? 1 : 0;
