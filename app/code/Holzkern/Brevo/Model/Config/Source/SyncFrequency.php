@@ -8,17 +8,19 @@ use Magento\Framework\Data\OptionSourceInterface;
 class SyncFrequency implements OptionSourceInterface
 {
     /**
-     * Get options
-     *
      * @return array
      */
     public function toOptionArray()
     {
         return [
-            ['value' => '0', 'label' => __('Not sync')],
-            ['value' => '1', 'label' => __('Every hour')],
-            ['value' => '12', 'label' => __('Twice a day')],
-            ['value' => '24', 'label' => __('Once a day')]
+            ['value' => '0 */6 * * *', 'label' => __('Every 6 hours')],
+            ['value' => '0 */4 * * *', 'label' => __('Every 4 hours')],
+            ['value' => '0 */2 * * *', 'label' => __('Every 2 hours')],
+            ['value' => '0 * * * *', 'label' => __('Every hour')],
+            ['value' => '0 */12 * * *', 'label' => __('Every 12 hours')],
+            ['value' => '0 0 * * *', 'label' => __('Daily (at midnight)')],
+            ['value' => '0 0 */2 * *', 'label' => __('Every 2 days')],
+            ['value' => '0 0 * * 0', 'label' => __('Weekly (Sundays)')],
         ];
     }
-} 
+}

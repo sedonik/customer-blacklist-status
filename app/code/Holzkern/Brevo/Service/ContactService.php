@@ -5,23 +5,20 @@ namespace Holzkern\Brevo\Service;
 
 use GuzzleHttp\Client;
 use Holzkern\Brevo\Api\ContactServiceInterface;
+use Holzkern\Brevo\Helper\Config;
 use Holzkern\Brevo\Model\ResourceModel\Contact as ContactResource;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class ContactService implements ContactServiceInterface
 {
-    const API_URL_CONFIG_PATH = 'holzkern/brevo/api_url';
-    const API_KEY_CONFIG_PATH = 'holzkern/brevo/api_key';
-
     /**
      * @var Client
      */
     private $httpClient;
 
     /**
-     * @var ScopeConfigInterface
+     * @var Config
      */
-    private $scopeConfig;
+    private $config;
 
     /**
      * @var ContactResource
@@ -30,16 +27,16 @@ class ContactService implements ContactServiceInterface
 
     /**
      * @param Client $httpClient
-     * @param ScopeConfigInterface $scopeConfig
+     * @param Config $config
      * @param ContactResource $contactResource
      */
     public function __construct(
         Client $httpClient,
-        ScopeConfigInterface $scopeConfig,
+        Config $config,
         ContactResource $contactResource
     ) {
         $this->httpClient = $httpClient;
-        $this->scopeConfig = $scopeConfig;
+        $this->config = $config;
         $this->contactResource = $contactResource;
     }
 
@@ -51,8 +48,8 @@ class ContactService implements ContactServiceInterface
      */
     public function getById($brevoId)
     {
-        $apiUrl = $this->scopeConfig->getValue(self::API_URL_CONFIG_PATH);
-        $apiKey = $this->scopeConfig->getValue(self::API_KEY_CONFIG_PATH);
+        $apiUrl = $this->config->getApiUrl();
+        $apiKey = $this->config->getApiKey();
 
         $response = $this->httpClient->request('GET', $apiUrl . '/v3/contacts/' . $brevoId, [
             'headers' => [
@@ -79,8 +76,8 @@ class ContactService implements ContactServiceInterface
      */
     public function getAll($limit = 50, $offset = 0, $sort = 'asc')
     {
-        $apiUrl = $this->scopeConfig->getValue(self::API_URL_CONFIG_PATH);
-        $apiKey = $this->scopeConfig->getValue(self::API_KEY_CONFIG_PATH);
+        $apiUrl = $this->config->getApiUrl();
+        $apiKey = $this->config->getApiKey();
 
         $queryParams = [
             'limit' => $limit,

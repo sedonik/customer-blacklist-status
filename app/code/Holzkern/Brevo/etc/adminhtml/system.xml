@@ -8,24 +8,26 @@
             <label>Holzkern</label>
             <tab>holzkern</tab>
             <resource>Holzkern_Brevo::config</resource>
-            <group id="brevo" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Brevo</label>
-                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enable Module</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </section>
+        <section id="brevo" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Brevo Integration</label>
+            <tab>holzkern</tab>
+            <resource>Holzkern_Brevo::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="api_url" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API URL</label>
+                    <comment>Brevo API base URL (e.g., https://api.brevo.com)</comment>
                 </field>
-                <field id="api_key" translate="label" type="obscure" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="api_key" translate="label comment" type="obscure" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>API Key</label>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <comment>Your Brevo API key</comment>
                 </field>
-                <field id="api_url" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>API URL</label>
-                    <comment>Enter the Brevo API endpoint URL</comment>
-                </field>
-                <field id="sync_frequency" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Sync email blacklisted status every</label>
+                <field id="sync_frequency" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sync Frequency</label>
                     <source_model>Holzkern\Brevo\Model\Config\Source\SyncFrequency</source_model>
-                    <comment>Select how often to sync email blacklisted status with Brevo</comment>
+                    <comment>How often to sync contacts from Brevo</comment>
                 </field>
             </group>
         </section>
