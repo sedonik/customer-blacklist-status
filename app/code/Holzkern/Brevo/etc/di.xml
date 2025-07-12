@@ -3,6 +3,9 @@
     <type name="Magento\Customer\Api\CustomerRepositoryInterface">
         <plugin name="brevo_contact_extension" type="Holzkern\Brevo\Plugin\CustomerRepositoryPlugin" />
     </type>
+    <type name="Magento\Customer\CustomerData\Customer">
+        <plugin name="brevo_blacklist_status" type="Holzkern\Brevo\Plugin\CustomerData\CustomerPlugin" />
+    </type>
     <type name="Holzkern\Brevo\Api\ContactServiceInterface">
         <arguments>
             <argument name="httpClient" xsi:type="object">GuzzleHttp\Client</argument>
