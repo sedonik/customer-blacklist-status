@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="holzkern_brevo_sync_contacts" instance="Holzkern\Brevo\Cron\SyncContacts" method="execute">
+            <schedule>0 * * * *</schedule>
+        </job>
+    </group>
+</config> 
