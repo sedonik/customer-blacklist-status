@@ -17,6 +17,14 @@ $welcomeMessage = $block->getWelcome();
               data-bind="text: new String('<?= $escaper->escapeHtml(__('Welcome, %1!', '%1')) ?>').
               replace('%1', customer().fullname)">
         </span>
+        <span class="blacklist-status" data-bind="attr: { 'data-status': customer().blacklist_status }">
+            <!-- ko if: customer().blacklist_status !== 1 -->
+            <span class="status-icon status-ok" title="Customer is not blacklisted">✓</span>
+            <!-- /ko -->
+            <!-- ko if: customer().blacklist_status === 1 -->
+            <span class="status-icon status-blocked" title="Customer is blacklisted">✗</span>
+            <!-- /ko -->
+        </span>
         <!-- /ko -->
         <!-- ko ifnot: customer().fullname  -->
         <span class="not-logged-in"
