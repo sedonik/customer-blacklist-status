@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Holzkern\Brevo\Model\ResourceModel;
 
-use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
-class Contact extends AbstractModel
+class Contact extends AbstractDb
 {
     /**
      * Initialize resource model
@@ -14,6 +14,6 @@ class Contact extends AbstractModel
      */
     protected function _construct()
     {
-        $this->_init('holzkern_brevo_contact', 'entity_id');
+        $this->_init('ho_brevo_contact', 'entity_id');
     }
 }
